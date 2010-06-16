@@ -1,0 +1,66 @@
+#size 640 400
+size 1920 1200
+#size 1024 768
+maxdepth 4
+AARays 32
+noLighting 0
+colorDelta 2.0
+
+camera
+	# Am Top landen:
+	/*
+	fov 45
+	origin -0.8406654745143141 0.1790162035091631 -0.8256942100619742
+	updir 0 0 -1
+	lookat 4.1 0 -1.4
+	*/
+
+	# Am Top landen, stück weiter "oben":
+	fov 45
+	origin -0.8406654745143141 0.1790162035091631 -0.9
+	updir 0 0 -1
+	lookat 4.1 0 -0.5
+
+	# Overview:
+	/*
+	fov 45
+	origin 0 0 -5
+	updir 0 1 0
+	lookat 0 0 0
+	*/
+end
+
+mat july
+	diffuse 1 1 1
+	shininess 1.0
+	shininessSharpness 1
+end
+
+mandelbulb
+	mat july
+
+	step 0.01
+	nmax 7
+	normalEps 1e-8
+	bailout 2
+
+	cascadeLevel 3
+end
+
+# von links
+spherelight
+	intensity 0.2
+	origin -2 -4 -4
+	color 0.7 0.3 2
+	numrays 2
+	radius 2
+end
+
+# von rechts
+spherelight
+	intensity 0.6
+	origin -2 4 -4
+	color 1 0.3 0
+	numrays 2
+	radius 2
+end

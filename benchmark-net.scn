@@ -1,0 +1,146 @@
+/*
+
+	Benchmarksetup
+
+
+	Single headless:
+
+		Athlon X2 4200+, 2 Threads     00:03:01
+
+
+	Distributed:
+
+		Athlon X2 4200+         |  2 Threads
+		Intel Core Duo T2300    |  2 Threads
+		------------------------+-----------
+		00:01:58 (00:00:39 XF)  |  4 Threads
+
+
+		Athlon X2 4200+         |  2 Threads
+		Intel Core Duo T2300    |  2 Threads
+		Athlon XP 2200+         |  1 Thread
+		------------------------+-----------
+		00:01:41 (00:00:40 XF)  |  5 Threads
+
+*/
+
+
+##################
+# Rendersettings #
+##################
+
+sizeX 1920
+sizeY 1200
+maxdepth 4
+AARays 16
+noLighting 0
+useBVT 1
+colorDelta 2.0
+
+camera
+	fov 60
+	origin 2.0 -2.0 8.0
+	updir 0.0 1.0 0.0
+	lookat -2.5 0.0 0.0
+end
+
+
+###############
+# Materialien #
+###############
+
+mat speccyRed
+	diffuse 0.5 0.0 0.0
+	specularity 0.5
+	shininess 0.7
+	shininessSharpness 0.7
+end
+
+mat roughGreen
+	diffuse 0.0 1.0 0.0
+	shininess 0.1
+	shininessSharpness 0.1
+end
+
+mat shinyGrey
+	specularity 0.7
+	shininess 0.7
+	shininessSharpness 5
+end
+
+mat lightBlue
+	diffuse 0.5 0.5 1.0
+end
+
+mat transparentGrey
+	transparency 0.75
+	ior 1.03
+end
+
+mat blurryGrey
+	specularity 0.7
+	roughness 0.1
+	roughRays 5
+end
+
+
+###########
+# Objekte #
+###########
+
+sphere
+	mat roughGreen
+	origin -2.0 -2.0 0.0
+	radius 1.0
+end
+
+sphere
+	mat shinyGrey
+	origin 2.0 1.0 1.0
+end
+
+sphere
+	mat speccyRed
+	origin 0.0 -2.0 -3.0
+end
+
+sphere
+	mat transparentGrey
+	origin 0.0 -2.0 2.0
+end
+
+sphere
+	mat blurryGrey
+	#mat lightBlue
+	origin -2.0 -2.0 6.0
+end
+
+offreader
+	mat lightBlue
+	file off/room.off
+end
+
+offreader
+	mat roughGreen
+	file off/cube.off
+	origin 3.0 -2.0 2.0
+end
+
+
+###########
+# Lichter #
+###########
+
+spherelight
+	intensity 1.0
+	decayRate 0.25
+	origin 3.0 3.0 10.0
+	numrays 1
+end
+
+spherelight
+	intensity 1.0
+	decayRate 0.25
+	origin -3.0 0.0 10.0
+	numrays 1
+end

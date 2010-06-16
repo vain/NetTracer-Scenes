@@ -1,0 +1,27 @@
+size 640 400
+maxdepth 4
+AARays 0
+noLighting 0
+colorDelta 2.0
+
+mat july
+	diffuse 1.0 0.7 0.3
+	shininess 1.0
+	shininessSharpness 10
+end
+
+mandelbulb
+	mat july
+
+	step 0.01
+	nmax 7
+	normalEps 1e-8
+	bailout 2
+
+	#firststep 1e-4
+	#accuracy 1e-5
+
+	cascadeLevel 3
+end
+
+# append output from gpu tracer

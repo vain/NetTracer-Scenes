@@ -1,0 +1,20 @@
+size 640 400
+maxdepth 4
+AARays 0
+noLighting 0
+colorDelta 2.0
+
+mat july
+	diffuse 1.0 0.7 0.3
+	shininess 1.0
+	shininessSharpness 10
+end
+
+qjulia
+	mat july
+	c 0, 1.15375, 0, 0
+	epsSurface 1e-4
+	nmaxSurface 20
+end
+
+# append output from gpu tracer
